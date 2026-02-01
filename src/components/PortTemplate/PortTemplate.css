@@ -1,8 +1,16 @@
+.port-rows-container {
+    /* margin-left: 48px; */
+}
+
+.port-box {
+    margin-left: 48px;
+}
 .port-info-box {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 8px;
+    /* margin-left: 64px; */
 }
 
 .action-bar {
@@ -15,7 +23,24 @@
     display: flex;
     gap:16px;
     align-items: center;
+    background-color: #999999;
+    border-radius: 4px;
 }
 
+.delete-button {
+    background: none;
+}
+.delete-button:hover {
+    border: none;
+}
 
+.add-button {
+    font-size: 12px;
+    padding: 12px;
+    background: none;
+}
+
+.readonly-toogle-wrapper {
+    margin-left: 16px;
+}
 

@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import type { Port } from './types'; 
+import type { Port } from '../../types/port.types'; 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faTrash, faAdd } from '@fortawesome/free-solid-svg-icons';
 
 interface PortInfoRowProps {
     port: Port
@@ -24,7 +26,7 @@ const PortInfoRow: React.FC<PortInfoRowProps> = ({
         onAddChild(id)
     }
   return (
-    <div key={port.id} className="port-box" style={{ marginLeft: depth * 20 }}>
+    <div key={port.id} className="port-box">
         <div className="port-info-box">
             <input 
                 type='text'
@@ -38,19 +40,36 @@ const PortInfoRow: React.FC<PortInfoRowProps> = ({
             {isFocused && (
                 <div className="action-bar">
                     <div className="action-card">
-                        <div>
-                            <input type="checkbox" checked={port.readonly} onChange={(e) => onUpdateReadonly(port.id, e.target.checked)}/>
-                            <label>Read Only</label>
+                        <div className='readonly-toogle-wrapper'>
+                            {/* <input type="checkbox" checked={port.readonly} onChange={(e) => onUpdateReadonly(port.id, e.target.checked)}/>
+                            <label>Read Only</label> */}
+
+                            <label className="toggle-label">
+                                <input
+                                    type="checkbox"
+                                    className="toggle-input"
+                                    checked={port.readonly}
+                                    onChange={(e) => onUpdateReadonly(port.id, e.target.checked)}
+                                />
+                                <span className="toggle-track">
+                                    <span className="toggle-thumb" />
+                                </span>
+                                <span>Readonly</span>
+                            </label>
                         </div>
-                        <button onClick={() => onRemove(port.id)}>&#128465;</button>
+                        <button onClick={() => onRemove(port.id)} className='delete-button'>
+                            <FontAwesomeIcon icon={faTrash} />
+                        </button>
                     </div>
-                    <button onClick={(e) => handleAddChild(e, port.id)} title="Add child">+</button>
+                    <button onClick={(e) => handleAddChild(e, port.id)} title="Add child" className='add-button dashed-button'>
+                        <FontAwesomeIcon icon={faAdd} />
+                    </button>
                 </div>
             )}
 
         </div>
         {port.children.length > 0 && (
-                <div className="port-box__children">
+                <div className="port-box-children">
                     {port.children.map((child) => (
                         <PortInfoRow
                             key={child.id}

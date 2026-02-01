@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import PortInfoRow from './PortInfoRow'
-import type { Port } from './types'
+import type { Port } from '../../types/port.types'
 import './PortTemplate.css'
 import { addChildToTree, removeFromTree, updatePortInTree, newPort } from '../../utils/portData.utils'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faAdd } from '@fortawesome/free-solid-svg-icons';
 
 export type { Port }
 
@@ -26,10 +28,12 @@ const PortTemplate: React.FC = () => {
     }
     return (
         <div className='port-template'>
-            <h1 className="port-template__header">Port Template</h1>
-            <button className="port-template__add-root" onClick={() => addPort(null)}>+</button>
-
-            {ports.map((port) => (
+            <h1 className="port-template-header">Port Template</h1>
+            <button className="add-button dashed-button port-template-add-root" onClick={() => addPort(null)}>
+                <FontAwesomeIcon icon={faAdd} />
+            </button>
+            <div className='port-rows-container'>
+                {ports.map((port) => (
                     <PortInfoRow
                         key={port.id}
                         port={port}
@@ -39,6 +43,7 @@ const PortTemplate: React.FC = () => {
                         onUpdateReadonly={updatePortReadonly}
                     />
                 ))}
+            </div>
 
         </div>
     )
