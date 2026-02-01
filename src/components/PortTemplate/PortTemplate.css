@@ -1,0 +1,21 @@
+.port-info-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.action-bar {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.action-card {
+    display: flex;
+    gap:16px;
+    align-items: center;
+}
+
+
+
