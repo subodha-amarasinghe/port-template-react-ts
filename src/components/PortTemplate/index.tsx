@@ -10,6 +10,7 @@ export type { Port }
 
 const PortTemplate: React.FC = () => {
     const [ports, setPorts] = useState<Port[]>([])
+    const [selectedId, setSelectedId] = useState<string | null>(null)
 
     const addPort = (parentId: string | null = null) => {
         setPorts((prev) => addChildToTree(prev, parentId, newPort()))
@@ -17,6 +18,7 @@ const PortTemplate: React.FC = () => {
 
     const removePort = (id: string) => {
         setPorts((prev) => removeFromTree(prev, id))
+        setSelectedId((prev) => (prev === id ? null : prev))
     }
 
     const updatePortName = (id: string, name: string) => {
@@ -37,6 +39,8 @@ const PortTemplate: React.FC = () => {
                     <PortInfoRow
                         key={port.id}
                         port={port}
+                        selectedId={selectedId}
+                        onSelect={setSelectedId}
                         onAddChild={addPort}
                         onRemove={removePort}
                         onUpdateName={updatePortName}
