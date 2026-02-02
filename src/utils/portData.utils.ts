@@ -8,7 +8,6 @@ export const  updatePortInTree = (ports: Port[], id: string, update: (p: Port) =
 }
 
 export const addChildToTree = (ports: Port[], parentId: string | null, child: Port): Port[] => {
-    console.log('addChildToTree', ports, parentId, child)
     if (parentId === null) return [...ports, child]
     return ports.map((port) =>
         port.id === parentId

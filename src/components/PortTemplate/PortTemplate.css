@@ -1,10 +1,14 @@
 .port-rows-container {
-    /* margin-left: 48px; */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .port-box {
     margin-left: 48px;
+     margin-top: 16px;
 }
+
 .port-info-box {
     display: flex;
     align-items: center;
