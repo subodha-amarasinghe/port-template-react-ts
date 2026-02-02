@@ -1,12 +1,49 @@
+.port-template {
+    --port-tree-line: #c4c4c4;
+}
+@media (prefers-color-scheme: dark) {
+    .port-template {
+        --port-tree-line: rgba(255, 255, 255, 0.4);
+    }
+}
+
 .port-rows-container {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    padding-left: 10px;
 }
 
 .port-box {
-    margin-left: 48px;
-     margin-top: 16px;
+    position: relative;
+    padding-left: 24px;
+    margin-top: 16px;
+}
+
+.port-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10px;
+    bottom: 0;
+    border-left: 1px dashed var(--port-tree-line);
+}
+
+.port-box::after {
+    content: "";
+    position: absolute;
+    top: 16px;
+    left: 10px;
+    width: 14px;
+    border-top: 1px dashed var(--port-tree-line);
+}
+
+.port-box:last-child::before {
+    bottom: 16px;
+}
+
+.port-box-children {
+    margin-left: 14px;
 }
 
 .port-info-box {
@@ -14,7 +51,6 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 8px;
-    /* margin-left: 64px; */
 }
 
 .action-bar {
