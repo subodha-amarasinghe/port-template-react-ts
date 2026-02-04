@@ -56,9 +56,13 @@
     gap: 10px;
 }
 
-.port-rows-container>.port-box:first-child::before {
+.port-rows-container > .port-box:first-child::before {
     top: 16px;
     height: calc(100% - 16px);
+}
+
+.port-rows-container > .port-box:only-child::before {
+    display: none;
 }
 
 .port-box-input {
