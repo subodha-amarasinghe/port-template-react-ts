@@ -1,6 +1,7 @@
 .port-template {
     --port-tree-line: #c4c4c4;
 }
+
 @media (prefers-color-scheme: dark) {
     .port-template {
         --port-tree-line: rgba(255, 255, 255, 0.4);
@@ -11,22 +12,21 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding-left: 10px;
+    margin-top: 16px;
 }
 
 .port-box {
     position: relative;
-    padding-left: 24px;
-    margin-top: 16px;
+    padding-left: 48px;
 }
 
 .port-box::before {
     content: "";
     position: absolute;
-    top: 0;
     left: 10px;
-    bottom: 0;
     border-left: 1px dashed var(--port-tree-line);
+    top: -16px;
+    height: calc(100% + 16px);
 }
 
 .port-box::after {
@@ -34,53 +34,84 @@
     position: absolute;
     top: 16px;
     left: 10px;
-    width: 14px;
+    width: 36px;
     border-top: 1px dashed var(--port-tree-line);
 }
 
 .port-box:last-child::before {
-    bottom: 16px;
+    height: 32px;
 }
 
 .port-box-children {
-    margin-left: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-left: -10px;
+    margin-top: 16px;
 }
 
 .port-info-box {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 8px;
+}
+
+.port-rows-container>.port-box:first-child::before {
+    top: 16px;
+    height: calc(100% - 16px);
+}
+
+.port-box-input {
+    height: 36px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .action-bar {
     display: flex;
-    gap: 24px;
+    gap: 16px;
     align-items: center;
+    height: 36px;
 }
 
 .action-card {
     display: flex;
-    gap:16px;
+    gap: 16px;
     align-items: center;
     background-color: #999999;
     border-radius: 4px;
+    height: 36px;
+    padding: 0 4px 0 12px;
+    box-sizing: border-box;
 }
 
 .delete-button {
     background: none;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
 }
+
 .delete-button:hover {
-    border: none;
+    border-color: transparent;
+    color: #333;
 }
 
 .add-button {
     font-size: 12px;
-    padding: 12px;
     background: none;
+    height: 36px;
+    width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 4px;
 }
 
 .readonly-toogle-wrapper {
-    margin-left: 16px;
+    line-height: 0;
 }
-
